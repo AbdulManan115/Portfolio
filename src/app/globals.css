@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #06070d;
+  --foreground: #f5f7ff;
+  --muted: #111420;
+  --card: #0d1020;
+  --border: #2a3151;
+  --accent: #7c3aed;
+  --accent-foreground: #f8faff;
+}
+
+.dark {
+  --background: #05060b;
+  --foreground: #eef1ff;
+  --muted: #101425;
+  --card: #0a0d1a;
+  --border: #242b46;
+  --accent: #6366f1;
+  --accent-foreground: #f8faff;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(99, 102, 241, 0.22), transparent 28%),
+    radial-gradient(circle at 90% 10%, rgba(168, 85, 247, 0.2), transparent 30%),
+    linear-gradient(150deg, rgba(9, 12, 23, 1) 0%, rgba(5, 7, 14, 1) 52%, rgba(10, 11, 20, 1) 100%),
+    var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 50% 30%, black 30%, transparent 88%);
+}
+
+.dark body::before {
+  background-image:
+    linear-gradient(rgba(129, 140, 248, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 140, 248, 0.14) 1px, transparent 1px);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 20% 24%, rgba(79, 70, 229, 0.17), transparent 25%),
+    radial-gradient(circle at 76% 28%, rgba(139, 92, 246, 0.15), transparent 25%),
+    radial-gradient(circle at 52% 78%, rgba(59, 130, 246, 0.11), transparent 26%);
+  filter: blur(26px);
+  opacity: 0.9;
+  animation: ambientShift 16s ease-in-out infinite alternate;
+}
+
+.soft-glass {
+  background: color-mix(in srgb, var(--card) 86%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  height: 3px;
+  width: var(--scroll-progress, 0%);
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.8);
+  transition: width 120ms linear;
+}
+
+@keyframes ambientShift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-1.5%, 1.5%, 0) scale(1.03);
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
