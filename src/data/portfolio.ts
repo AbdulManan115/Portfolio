@@ -31,7 +31,7 @@ export const projects: Project[] = [
     description: "A scalable storefront focused on performance, product discovery, and smooth checkout UX.",
     techStack: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
     features: ["Product catalog with filtering", "Secure cart and checkout flow", "Order tracking and status updates"],
-    demoUrl: "https://example.com",
+    demoUrl: "",
     repoUrl: "https://github.com/example/ecommerce-app",
     image: "/images/ecommerce.svg"
   },
